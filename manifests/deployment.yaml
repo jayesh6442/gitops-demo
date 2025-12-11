@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: node-docker-app
 spec:
-  replicas: 1
+  replicas: 5
   selector:
     matchLabels:
       app: node-docker-app
