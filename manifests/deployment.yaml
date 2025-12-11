@@ -1,20 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: node-docker-app 
+  name: node-docker-app
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
-      app: web
+      app: node-docker-app
   template:
     metadata:
       labels:
-        app: web
+        app: node-docker-app
     spec:
       containers:
-      - name: node-docker-app
-        image: jayesh1410/node-docker-app
+      - name: app
+        image: jayesh1410/node-docker-app:latest
         ports:
         - containerPort: 3000
+        env:
+        - name: NODE_ENV
+          value: "production"
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "300m"
+            memory: "256Mi"
 
